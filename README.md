@@ -2,7 +2,7 @@
 A Series of Tutorials for analyzing high-resolution optical spectra
 
 Topics:
- * Opening fits files and headers of reduced spectra and wavelength solutions
+ * Opening fits files and headers of reduced spectra and wavelength solutions (see https://docs.astropy.org/en/stable/io/fits/ to get started)
  * Opening and understanding raw spectra (bias, trace, dispersion vs cross-dispersion direction), sky projection
  * Normalization and blaze function removal
  * Identifying sky emission lines, equilibrium(photospheric) features vs non-equilibrium features.
