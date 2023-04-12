@@ -12,13 +12,13 @@ import sys
 from astropy.io import fits as pyfits
 from matplotlib.collections import LineCollection
 
-eso = Eso()
+#eso = Eso()
 
-dp_id = 'ADP.2021-05-30T01:02:35.349'
-table = eso.query_surveys('HARPS', cache=False, target="HD10700")
+#dp_id = 'ADP.2021-05-30T01:02:35.349'
+#table = eso.query_surveys('HARPS', cache=False, target="HD10700")
 #
 
-hdulist = pyfits.open( "ADP.2021-05-30T01 02 35.343.fits" )
+hdulist = pyfits.open( "ADP.2017-07-25T01 01 03.749.fits" )
 
 # print column information
 hdulist[1].columns
@@ -43,7 +43,7 @@ plt.set_cmap('Spectral')
 
 
 
-bin = 100
+bin = 50
 
 # this list will contain the indices corresponding to each of the 95th percentile flux values in each bin
 indices = []
@@ -72,17 +72,18 @@ for index in indices:
     wave_values = np.append(wave_values, wave[ind])
     fl_values = np.append(fl_values, flux[ind])
 
-spl = splrep(wave_values, fl_values, s = 500000)
+spl = splrep(wave_values, fl_values, s = 500000000)
 flux_fit = splev(wave, spl)
 
 
 first_normalized_flux = flux / flux_fit
 flux98 = np.percentile(first_normalized_flux, 98)
 normalized_flux = first_normalized_flux / flux98
+plt.plot(wave, normalized_flux)
+plt.show()
 
-"""""""""""
 
-
+'''''''''''
 plt.plot(wave, normalized_flux, label = 'Data')
 plt.scatter(wave_values, fl_values, color = 'black', label = 'Flux Values in the 95th Percentile')
 plt.title('Mapping out the Echelle Blaze Function Fit')
@@ -92,8 +93,7 @@ plt.ylabel('Flux')
 plt.legend()
 plt.show()
 
-"""""""""""
-
+'''''''''''
 
 
 
@@ -146,3 +146,4 @@ plt.xlim([6860, 6870])
 plt.ylabel('Flux')
 plt.title('Telluric O₂')
 plt.show()
+
