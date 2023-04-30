@@ -22,7 +22,6 @@ dp_id = 'ADP.2017-07-25T01:01:03.749'
 data_files = eso.retrieve_data(dp_id)
 
 hdulist = pyfits.open('ADP.2017-07-25T01 01 03.749.fits')
-''''''''''
 scidata = hdulist[1].data
 
 wave = scidata[0][0]
@@ -86,4 +85,3 @@ def find_psf(df, column_name):
     
     return psf
 
-find_psf(hyades, 'dist_50') '''''''''

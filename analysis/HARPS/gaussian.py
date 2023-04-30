@@ -6,14 +6,26 @@ import matplotlib.pyplot as plt
   
 ## generate the data and plot it for an ideal normal curve
   
-## x-axis for the plot
-x_data = np.arange(-5, 5, 0.001)
+import numpy as np
+import matplotlib.pyplot as plt
+
+def gaussian_curve(width, center, amplitude):
+    """Generate a Gaussian curve with given width, center location, and amplitude."""
+    return amplitude * np.exp(-((center) / width) ** 2)
+
+def repeating_gaussian_curves(x, num_repeats, width, amplitude):
+    """Generate a repeating set of Gaussian curves with given number of repeats, width, center, and amplitude."""
+    x = np.asarray(x)
+    for i in range(int(x[0]), int(x[-1]), int(len(x) / num_repeats)):
+        y = gaussian_curve(width, i, amplitude)
+        plt.plot(x, y)
 
 
-## y-axis as the gaussian
-y_data = stats.norm.pdf(x_data, 0, 1)
-  
-## plot data
-plt.plot(x_data, y_data)
+# Example usage
+x = np.linspace(-10, 10, 1000)
+y = repeating_gaussian_curves(x, num_repeats=3, width=2, amplitude=1)
 plt.show()
+
+    
+
 
