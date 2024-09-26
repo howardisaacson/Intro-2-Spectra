@@ -2,3 +2,6 @@
 analysis/.DS_Store
 analysis/*/.ipynb_checkpoints
 analysis/*/.ipynb_checkpoints/
+analysis/.ipynb_checkpoints/
+analysis/KPF/.ipynb_checkpoints/*
+data/*
